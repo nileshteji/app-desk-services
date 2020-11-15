@@ -2,7 +2,10 @@
     <string name="app_name">AppDeskService</string>
     <string name="hint_userName">Enter Username</string>
     <string name="title_activity_main">MainActivity</string>
+
+
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_dashboard">7 Day Report</string>
+    <string name="title_notifications">Settings</string>
+
 </resources>

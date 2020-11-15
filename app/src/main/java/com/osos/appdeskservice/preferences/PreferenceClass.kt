@@ -10,14 +10,18 @@ class PreferenceClass(var context: Context) {
 
 
     var mPref: SharedPreferences
+    var editor:SharedPreferences.Editor
 
 
     init {
         mPref = context.getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE)
+        editor=mPref.edit()
+
     }
 
     fun insertTemperature(a: Temp) {
-        mPref.edit().putString(Constants.PREF_TEMP, a.name)
+        editor.putString(Constants.PREF_TEMP, a.name)
+        editor.apply()
     }
 
     fun getTemperature(): String? {
@@ -25,7 +29,8 @@ class PreferenceClass(var context: Context) {
     }
 
     fun insertUserName(a: String) {
-        mPref.edit().putString(Constants.PREF_USER, a)
+        editor.putString(Constants.PREF_USER, a)
+        editor.apply()
     }
 
     fun getUsername(): String? {
