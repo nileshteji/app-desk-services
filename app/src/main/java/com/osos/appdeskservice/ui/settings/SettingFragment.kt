@@ -24,7 +24,7 @@ class SettingFragment : Fragment() {
 
         settingsViewModel.getUserName(requireActivity())
         settingsViewModel.userName.observe(viewLifecycleOwner){
-
+                   text_username.text = it
         }
 
         return root
