@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.osos.appdeskservice.R
-import kotlinx.android.synthetic.main.fragment_notifications.*
+import kotlinx.android.synthetic.main.fragment_setting.*
+
 
 class SettingFragment : Fragment() {
 
@@ -20,7 +21,7 @@ class SettingFragment : Fragment() {
     ): View? {
         settingsViewModel =
             ViewModelProvider(this).get(SettingsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_notifications, container, false)
+        val root = inflater.inflate(R.layout.fragment_setting, container, false)
 
         settingsViewModel.getUserName(requireActivity())
         settingsViewModel.userName.observe(viewLifecycleOwner){
