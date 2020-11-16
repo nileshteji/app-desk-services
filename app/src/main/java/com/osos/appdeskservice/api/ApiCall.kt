@@ -1,21 +1,27 @@
 package com.osos.appdeskservice.api
 
 import com.osos.appdeskservice.data.Constants
+import com.osos.appdeskservice.data.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
+import javax.security.auth.callback.Callback
 
 interface ApiCall {
 
 //    api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
 
-    @GET("weather")
-    suspend fun getCurrentWeather(
+    @GET("data/2.5/weather")
 
-        @Query("lat")   a : String ,
-        @Query("lon")   b : String ,
-        @Query("appid") c : String = Constants.API_KEY,
-        @Query("units") d : String = "metric" // celsius
+      suspend fun getWeather(
 
-    )
+        @Query("lat")   lat  : String,
+        @Query("lon")   lon  : String,
+        @Query("appid") key  : String
+
+        ) : Response
+
+
 }
+
+

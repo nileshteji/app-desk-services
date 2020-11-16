@@ -8,7 +8,10 @@ object ApiBuilder {
 
 
     fun getRetrofit():Retrofit{
-        return Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
+        return Retrofit.Builder()
+            .baseUrl(Constants.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 
 

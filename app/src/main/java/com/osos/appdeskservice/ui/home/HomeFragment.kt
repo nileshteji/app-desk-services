@@ -18,13 +18,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.location.*
 import com.osos.appdeskservice.R
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    var lat  : Double? = null
-    var lang : Double? = null
+
 
     @SuppressLint("MissingPermission")
     override fun onCreateView(
@@ -32,43 +32,44 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
 
+        // View Model Setup
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         // access location
         val locationRequest = LocationRequest().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-        fusedLocationProviderClient.requestLocationUpdates(
-            locationRequest,
-            object : LocationCallback() {
-                override fun onLocationResult(p0: LocationResult?) {
+        fusedLocationProviderClient.requestLocationUpdates( locationRequest, object : LocationCallback() {
+
+            override fun onLocationResult(p0: LocationResult?) {
                     super.onLocationResult(p0)
-                    lat = p0!!.lastLocation.longitude
-                    lang = p0.lastLocation.latitude
-                    apiCall()
-                }
+                    homeViewModel.getWeather(p0!!.lastLocation.latitude,p0.lastLocation.longitude)
+               }
             },
             Looper.myLooper()
         )
+
+
+
+        homeViewModel.response.observe(viewLifecycleOwner){
+            Log.d("LOGS", "onCreateView: ${it.name}" )
+        }
+
         return root
     }
 
 
 
 
-    fun apiCall(){
-        Log.d("LOGS", "onLocationResult: ${lang} $lat " )
-
-
-
-
-    }
 
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        check()
+    }
 
+
+    fun check(){
         // fused api to access location
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
@@ -79,9 +80,5 @@ class HomeFragment : Fragment() {
             ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),100)
             return
         }
-
-
-
-
     }
 }
