@@ -17,13 +17,13 @@ class HomeViewModel : ViewModel() {
 
     var response:MutableLiveData<Response> = MutableLiveData()
 
-    fun getWeather(lat : Double?, lang : Double?) {
+    fun getWeather(lat : Double?, lang : Double? , unit : String = "metric") {
         Log.d("LOGS", "getWeather: ${lat.toString()} ${lang.toString()} ")
 
         viewModelScope.launch {
             val job = async {
 
-                ApiBuilder.getApiCall().getWeather(lat.toString(),lang.toString(),Constants.API_KEY)
+                ApiBuilder.getApiCall().getWeather(lat.toString(),lang.toString(),Constants.API_KEY,unit)
             }
             response.value = job.await()
         }

@@ -17,7 +17,8 @@ interface ApiCall {
 
         @Query("lat")   lat  : String,
         @Query("lon")   lon  : String,
-        @Query("appid") key  : String
+        @Query("appid") key  : String,
+        @Query("units") unit : String
 
         ) : Response
 

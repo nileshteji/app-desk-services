@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.location.*
 import com.osos.appdeskservice.R
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -52,7 +53,11 @@ class HomeFragment : Fragment() {
 
 
         homeViewModel.response.observe(viewLifecycleOwner){
-            Log.d("LOGS", "onCreateView: ${it.name}" )
+            place_name.text=it.name
+            temperature2.text = it.main.temp.toString()
+            feels_like.text = it.main.feel.toString()+"°"
+            min_temp.text = it.main.min.toString() + "°"
+            max_temp.text = it.main.max.toString() + "°"
         }
 
         return root

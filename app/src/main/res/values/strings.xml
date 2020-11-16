@@ -12,4 +12,11 @@
     <string name="temperature_placeholder">Temperature Unit</string>
     <string name="celsius">Celsius</string>
     <string name="fahrenit">Fahrenit</string>
+    <string name="current_temparature">Current Temparature</string>
+    <string name="_36_c">°</string>
+    <string name="placeholder">PlaceHolder</string>
+    <string name="statistics">Statistics</string>
+    <string name="feels_like">Feels Like</string>
+    <string name="max_temp">Max Temp</string>
+    <string name="min_temp">Min Temp</string>
 </resources>
