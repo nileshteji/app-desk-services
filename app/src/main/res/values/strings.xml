@@ -4,7 +4,8 @@
     <string name="title_activity_main">MainActivity</string>
 
 
-    <string name="title_home">Home</string>
+    <string name="title_home">Current</string>
+    <string name="date">Date</string>
     <string name="title_dashboard">7 Day Report</string>
     <string name="title_notifications">Settings</string>
     <string name="user_name">User Name</string>

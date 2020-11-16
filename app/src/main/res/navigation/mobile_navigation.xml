@@ -28,4 +28,11 @@
         tools:layout="@layout/fragment_setting">
 
     </fragment>
+    <fragment
+        android:id="@+id/navigation_date"
+        android:name="com.osos.appdeskservice.ui.date.DateFragment"
+        android:label="fragment_date"
+        tools:layout="@layout/fragment_date" />
+
+
 </navigation>
