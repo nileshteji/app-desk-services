@@ -19,4 +19,14 @@
     <string name="feels_like">Feels Like</string>
     <string name="max_temp">Max Temp</string>
     <string name="min_temp">Min Temp</string>
+
+
+
+    <string-array name="cities">
+
+        <item> </item>
+        <item>Delhi</item>
+        <item>Mumbai</item>
+        <item>Noida</item>
+    </string-array>
 </resources>

@@ -9,6 +9,7 @@ import com.osos.appdeskservice.api.ApiBuilder
 import com.osos.appdeskservice.api.ApiCall
 import com.osos.appdeskservice.data.Constants
 import com.osos.appdeskservice.data.Response
+import com.osos.appdeskservice.preferences.PreferenceClass
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 

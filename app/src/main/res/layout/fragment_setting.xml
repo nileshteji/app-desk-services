@@ -82,7 +82,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="25sp"
-                app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+                app:layout_constraintBottom_toTopOf="@+id/radio_group"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -90,8 +90,7 @@
             </TextView>
 
             <RadioGroup
-
-                android:id="@+id/radioGroup"
+                android:id="@+id/radio_group"
                 android:layout_width="wrap_content"
                 android:layout_height="54dp"
                 android:orientation="horizontal"
@@ -101,12 +100,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView">
 
                 <RadioButton
-
+                    android:id="@+id/cel_radio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/celsius"/>
 
                 <RadioButton
+                    android:id="@+id/fah_radio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/fahrenit"/>
