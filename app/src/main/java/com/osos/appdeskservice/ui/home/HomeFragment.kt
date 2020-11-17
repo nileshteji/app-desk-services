@@ -31,6 +31,9 @@ class HomeFragment : Fragment() {
     ): View? {
 
         // View Model Setup
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+
+
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         // access location
@@ -68,7 +71,7 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+
 
 
         // view Model Observe

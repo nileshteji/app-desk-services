@@ -1,6 +1,7 @@
 package com.osos.appdeskservice.api
 
 import com.osos.appdeskservice.data.Response
+import com.osos.appdeskservice.data.SevenDayResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -21,15 +22,16 @@ interface ApiCall {
     ): Response
 
 
-    @GET("data/2.5/weather")
+    @GET("data/2.5/onecall")
 
-    suspend fun cityWeather(
+    suspend fun sevenDayWeather(
 
-      @Query("q") city: String,
-      @Query("appid") key: String,
-      @Query("units") unit: String
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
+        @Query("appid") key: String,
+        @Query("units") unit: String
 
-    ): Response
+    ) :SevenDayResponse
 
 }
 

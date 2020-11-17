@@ -27,6 +27,7 @@ class SettingFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_setting, container, false)
 
         settingsViewModel.getUserName(requireActivity())
+
         settingsViewModel.userName.observe(viewLifecycleOwner) {
             root.text_username.text = it
         }
