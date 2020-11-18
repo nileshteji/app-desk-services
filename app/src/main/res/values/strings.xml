@@ -19,7 +19,9 @@
     <string name="feels_like">Feels Like</string>
     <string name="max_temp">Max Temp</string>
     <string name="min_temp">Min Temp</string>
-    <string name="text">Since the API used in this module was paid one and i also raised the concern</string>
+    <string name="text">Since the API used in this module was paid one and i also raised the concern.History Bulk is a paid API.You can also
+    cross check the Open Weather Website .Thank You.
+    </string>
 
 
     <string-array name="cities">

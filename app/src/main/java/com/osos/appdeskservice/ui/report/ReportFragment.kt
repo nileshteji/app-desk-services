@@ -85,6 +85,7 @@ class ReportFragment : Fragment() {
 
             val adapter =SevenReport(it.daily)
             recycler_view.adapter = adapter
+            progressBar.visibility = View.GONE
 
         }
     }
