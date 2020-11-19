@@ -76,6 +76,7 @@ class HomeFragment : Fragment() {
 
         // view Model Observe
         homeViewModel.response.observe(viewLifecycleOwner) {
+            progressBar2.visibility = View.GONE
             place_name.text = it.name
             temperature2.text = it.main.temp.toString()
             feels_like.text = it.main.feel.toString() + "°"
