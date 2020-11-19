@@ -1,5 +1,6 @@
 package com.osos.appdeskservice.api
 
+import com.osos.appdeskservice.data.DateResponse
 import com.osos.appdeskservice.data.Response
 import com.osos.appdeskservice.data.SevenDayResponse
 import retrofit2.http.GET
@@ -32,6 +33,21 @@ interface ApiCall {
         @Query("units") unit: String
 
     ) :SevenDayResponse
+
+
+//    https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=19.076&lon=72.8777&dt=1605637800&appid=52e3ab36dcce75b35b8133454ef2fdbd
+
+    @GET("data/2.5/onecall/timemachine")
+    suspend fun getHistory(
+
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
+        @Query("dt") dt:String,
+        @Query("appid") key: String,
+        @Query("units") unit: String
+
+    ) : DateResponse
+
 
 }
 

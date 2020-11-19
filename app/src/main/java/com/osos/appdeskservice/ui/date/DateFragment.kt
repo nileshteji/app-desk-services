@@ -1,5 +1,6 @@
 package com.osos.appdeskservice.ui.date
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -13,6 +14,9 @@ import android.widget.DatePicker
 import com.osos.appdeskservice.R
 import kotlinx.android.synthetic.main.fragment_date.*
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class DateFragment : Fragment() {
@@ -30,6 +34,7 @@ class DateFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_date, container, false)
     }
 
+    @SuppressLint("SimpleDateFormat")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(DateViewModel::class.java)
@@ -39,10 +44,7 @@ class DateFragment : Fragment() {
             val datePickerDialog=DatePickerDialog(
                 requireContext(),
                 DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-
-                    Log.d("LOGS", "onActivityCreated: $year $month $dayOfMonth")
-                    val date = SimpleDateFormat("dd-MM-yyyy").parse("$dayOfMonth-$month-$year")
-                    Log.d("LOGS", "onActivityCreated: ${date.time} " )
+                    val dt = convertToUnix(dayOfMonth,month, year)
 
                 },
                 Calendar.getInstance().get(Calendar.YEAR),
@@ -56,6 +58,20 @@ class DateFragment : Fragment() {
 
 
 
+
+    }
+
+
+    fun convertToUnix(dayOfMonth:Int , month:Int, year:Int ) :Long{
+        val monthNew = month + 1
+
+        val l = LocalDate.parse("$dayOfMonth-$monthNew-$year", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
+
+        val unix = l.atStartOfDay(ZoneId.systemDefault()).toInstant().epochSecond
+
+        Log.d("LOGS", "onActivityCreated: $unix")
+
+        return  unix
 
     }
 
