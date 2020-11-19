@@ -46,6 +46,18 @@ class DateFragment : Fragment() {
         init()
 
 
+        viewModel.history.observe(viewLifecycleOwner){
+            if(it == null){
+                Toast.makeText(requireActivity(),"Sorry the Particular Date Cannot be Processed",Toast.LENGTH_LONG).show()
+            }
+            else {
+                result.text =
+                    " ${it.current.temp.toString()} is the Temperature of ${city.name} for the selected date"
+            }
+        }
+
+
+
         // click listeners
         calendar_button.setOnClickListener() {
 
@@ -121,10 +133,7 @@ class DateFragment : Fragment() {
     fun convertToUnix(dayOfMonth: Int, month: Int, year: Int): Long {
         val monthNew = month + 1
 
-        val l = LocalDate.parse(
-            "$dayOfMonth-$monthNew-$year",
-            DateTimeFormatter.ofPattern("dd-MM-yyyy")
-        )
+        val l = LocalDate.parse("$dayOfMonth-$monthNew-$year", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
 
         date.text = "$dayOfMonth $monthNew $year"
 
